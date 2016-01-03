@@ -37,9 +37,6 @@ public class TasksListPage extends AbstractTeamWorkPage{
 	}
 		
 	@Override
-	protected void assertInPage() {
-		
+	protected void assertInPage() {		
 	}
-
-
 }

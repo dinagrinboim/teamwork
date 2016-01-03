@@ -1,5 +1,7 @@
 package com.topq.teamwork;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,19 +43,14 @@ public class TasksPage extends AbstractTeamWorkPage{
 		return new TasksListPage(driver); 
 	}
 	
-	public boolean verifyTaskListExits(String nameOfTaskList){
-		//TODO: Replace this call with findElements and verify that we have more then one item in the list
+	public boolean verifyTaskListExits(String nameOfTaskList) throws InterruptedException{
 		WebElement listTaskName = driver.findElement(By.xpath("//span[contains(.,'"+ nameOfTaskList +"')]"));
-		/*list
-		listTaskName.getSize()*/
-		
-			
-			
-		/*WebElement listTaskName = driver.findElement(By.xpath("//span[contains(.,'"+ nameOfTaskList +"')]"));
-		if(listTaskName != null){
-			return true;
-		}
-		return false;*/		
+		listTaskName.click();
+		System.out.println("11");
+		Thread.sleep(5000);
+		List<WebElement> tasks = driver.findElements(By.xpath("//a[@class='cb']/img])"));
+		System.out.println("22");
+		return (tasks.size() == 2);
 	}
 	
 	public void deleteTaskList(String nameOfTaskList){

@@ -11,8 +11,10 @@ public abstract class AbstarctPageObject {
 		super();
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
-		assertInPage();
 	}
-	
-	 protected abstract void assertInPage();	
+
+	protected void assertInPage() {
+		// TODO Auto-generated method stub
+		
+	}	
 }

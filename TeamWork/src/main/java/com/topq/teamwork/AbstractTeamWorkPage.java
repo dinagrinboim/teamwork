@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class AbstractTeamWorkPage extends AbstarctPageObject{
 
-	By m_tabTask = By.xpath("//a[@href='projects/145467-webdriver-training/tasks']");
+	By m_tabTask = By.xpath("//li[@id='tab_tasks']");
 	
 	public AbstractTeamWorkPage(WebDriver driver_) {
 		super(driver_);

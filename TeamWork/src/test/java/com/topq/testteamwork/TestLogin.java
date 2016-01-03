@@ -1,9 +1,6 @@
 package com.topq.testteamwork;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
@@ -15,19 +12,28 @@ import com.topq.teamwork.LoginPage;
 import com.topq.teamwork.MilestonesPage;
 import com.topq.teamwork.TasksListPage;
 import com.topq.teamwork.TasksPage;
+import com.topq.testteamwork.BrowserDriver.Browsers;
 
 public class TestLogin {
 
-	private WebDriver driver;
-    private String username = "fake09@fake.com";
-    private String password = "fake";
+	private WebDriver driver = BrowserDriver.getDriver(Browsers.FIREFOX); 
 	
+	/*SingletonFileConfiguration properties = new SingletonFileConfiguration();
+	private String url = properties.getUrl();
+	private String username = properties.getUserName();
+    private String password = properties.getUserPassword();*/
+    
+	/*private String username = "fake09@fake.com";
+    private String password = "fake";*/
+    
+	private String  url = SingletonFileConfiguration.getInstance().getMyProperties("url");
+	private String  username = SingletonFileConfiguration.getInstance().getMyProperties("username");
+	private String  password = SingletonFileConfiguration.getInstance().getMyProperties("password");
+    
 	@BeforeMethod
 	public void setup(){
-		System.setProperty("webdriver.chrome.driver", "/home/developer/driver/chromedriver");
-		driver = new FirefoxDriver();		
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		driver.get("http://topq.teamwork.com");
+		/*driver.get("http://topq.teamwork.com");*/			
+		driver.get(url);
 	}
 	
 	@AfterMethod
@@ -45,7 +51,6 @@ public class TestLogin {
 		Reporter.log("Add new task list");
 		TasksPage tasksPage = homePage.clickOnTasksMenuItmAndGoToTasksPage();
 		
-		//TODO: Implement a new class that represents the add new task list page
 		tasksPage.clickOnAddTaskBtn();
 		tasksPage.setNameOfNewTaskList("din");
 		tasksPage.btnCreateTaskList();

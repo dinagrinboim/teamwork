@@ -12,5 +12,4 @@ public class MilestonesPage extends AbstractTeamWorkPage {
 	protected void assertInPage() {
 
 	}
-
 }
